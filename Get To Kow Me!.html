@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Student Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDF2F4; scroll-behavior: smooth; }
+        .bg-pastel-pink { background-color: #FBCFE8; }
+        
+        /* Efek Kartu Neo-Brutalism */
+        .card-pop {
+            background: white;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px 0px #000;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .card-pop:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px 0px #F472B6;
+            border-color: #F472B6;
+        }
+        .card-pop:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px #000;
+        }
+
+        /* Navbar link effect */
+        .nav-link {
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .nav-link:hover { color: #F472B6; }
+
+        /* Accordion Content */
+        .content-hide { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
+        .content-show { max-height: 500px; transition: max-height 0.5s ease-in; }
+
+        /* Modal Contact Me */
+        #contactModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="bg-white py-5 px-8 md:px-16 flex justify-between items-center sticky top-0 z-50 border-b-4 border-black">
+        <div class="text-2xl font-black text-black italic tracking-tighter">&lt;Hi There!&gt;</div>
+        <div class="space-x-8 hidden md:flex items-center font-bold">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <button onclick="toggleModal()" class="bg-[#F472B6] text-white px-6 py-2 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-pink-500 active:shadow-none active:translate-y-1 transition-all">
+                Contact Me
+            </button>
+        </div>
+    </nav>
+
+    <section class="max-w-6xl mx-auto px-8 py-20 flex flex-col md:flex-row items-center gap-16">
+        <div class="flex-1 text-center md:text-left" data-aos="fade-right">
+            <h1 class="text-6xl font-black text-black leading-tight">
+                Halo, Saya <span class="text-pink-500 italic">Davina Aprilisah
+            </h1>
+            <p class="mt-6 text-xl text-gray-700 font-medium italic">"Belajar hal baru, mengeksplorasi kreativitas."</p>
+            <div class="mt-8 flex gap-4 justify-center md:justify-start">
+                <a href="https://drive.google.com/file/d/1zVp0LtmxNLlwhBsKP0hZ7Oq9OI5PNDQM/view?usp=drive_link" class="bg-black text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition shadow-[5px_5px_0px_0px_#F472B6]">Download CV</a>
+            </div>
+        </div>
+        <div class="flex-1" data-aos="zoom-in">
+            <div class="w-72 h-72 md:w-96 md:h-96 mx-auto bg-white rounded-[2.5rem] border-4 border-black shadow-[12px_12px_0px_0px_#000] overflow-hidden">
+                <img src="bismillah-fotonya.jpeg" alt="Profile" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white border-y-4 border-black px-8">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-black mb-12 text-center uppercase tracking-tighter" data-aos="fade-up">Riwayat Pendidikan</h2>
+            <p class="text-center text-gray-500 mb-10 italic" data-aos="fade-up">(Klik untuk melihat detail pengalaman)</p>
+            
+            <div class="space-y-6">
+                <div class="card-pop p-6 rounded-2xl" onclick="toggleAccordion('sd')" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">SD Negeri 83 Palembang</h3>
+                        <i class="fa-solid fa-chevron-down text-pink-500 transition-transform" id="icon-sd"></i>
+                    </div>
+                    <div id="sd" class="content-hide mt-4 border-t-2 border-dashed border-gray-200 pt-4">
+                        <ul class="list-disc ml-5 text-gray-700 space-y-1">
+                            <li>Lulus Tahun 2018.</li>
+                            <li>Aktif Mengikuti Ektrakurikuler Volly.</li>
+                            <li>Aktif Mengikuti Ektrakurikuler Biola.</li>
+                            <li>Aktif Mengikuti Ektrakurikuler Paduan Suara.</li>
+                            <li>Ikut Serta Paduan Suara dalam rangka HUT RI-71 tingkat kota Palembang.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-pop p-6 rounded-2xl" onclick="toggleAccordion('smp')" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">SMP Dharma Wanita Surabaya</h3>
+                        <i class="fa-solid fa-chevron-down text-pink-500 transition-transform" id="icon-smp"></i>
+                    </div>
+                    <div id="smp" class="content-hide mt-4 border-t-2 border-dashed border-gray-200 pt-4">
+                        <ul class="list-disc ml-5 text-gray-700 space-y-1">
+                            <li>Aktif Berorganisasi di OSIS.</li>
+                            <li>Bendahara 2 OSIS.</li>
+                            <li>Ketua Sie Kebudayaan OSIS.</li>
+                            <li>Aktif mengikuti ekstrakurikuler Kolintang dan Angklung.</li>
+                            <li>Aktif mengikuti ekstrakurikuler Paduan Suara.</li>
+                            <li>Aktif mengikuti ekstrakurikuler Volly.</li>
+                            <li>Aktif mengikuti perlombaan Volly tingkat kota Surabaya.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-pop p-6 rounded-2xl" onclick="toggleAccordion('sma')" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">SMA Negeri 14 Surabaya</h3>
+                        <i class="fa-solid fa-chevron-down text-pink-500 transition-transform" id="icon-sma"></i>
+                    </div>
+                    <div id="sma" class="content-hide mt-4 border-t-2 border-dashed border-gray-200 pt-4">
+                        <ul class="list-disc ml-5 text-gray-700 space-y-1">
+                            <li>Jurusan IPA.</li>
+                            <li>Ikut Serta Dalam Olimpiade Sains Nasional Bidang Biologi.</li>
+                            <li>Aktif Berorganisasi di OSIS.</li>
+                            <li>Ketua SIE Kewirausahaan OSIS.</li>
+                            <li>Aktif mengikuti Ektrakurikuler Paskibra.</li>
+                            <li>Aktif mengikuti ajang perlombaan Paskibra Tingkat Nasional.</li>
+                            <li>Ikut Serta Pengibaran Bendera dalam rangka HUT RI-77 Tingkat Kota Surabaya.</li>
+                            <li>Ikut Serta Dalam Parade Surya Senja Tingkat Provinsi Jawa Timur.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-pop p-6 rounded-2xl" onclick="toggleAccordion('kuliah')" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Politeknik Perkapalan Negeri Surabaya</h3>
+                        <i class="fa-solid fa-chevron-down text-pink-500 transition-transform" id="icon-kuliah"></i>
+                    </div>
+                    <div id="kuliah" class="content-hide mt-4 border-t-2 border-dashed border-gray-200 pt-4">
+                        <p class="font-bold text-gray-800">D4 Teknik Pengolahan Limbah</p>
+                        <ul class="list-disc ml-5 text-gray-700 space-y-2 mt-2">
+                            <li>Aktif dalam Organisasi Legislatif Kampus.</li>
+                            <li>Mengembangkan portofolio digital dan web.</li>
+                            <li>Fokus pada pembelajaran pengolahan limbah B3.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 px-8 bg-[#FDF2F4] mt-32">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black mb-12 text-center uppercase tracking-tighter" data-aos="zoom-in">My Superpowers</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="card-pop p-8 text-center rounded-2xl bg-white" data-aos="flip-left" data-aos-delay="100">
+                    <i class="fa-solid fa-droplet text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="font-bold text-lg">Waste Treatment</h3>
+                </div>
+                <div class="card-pop p-8 text-center rounded-2xl bg-white" data-aos="flip-left" data-aos-delay="200">
+                    <i class="fa-solid fa-code text-4xl text-pink-500 mb-4"></i>
+                    <h3 class="font-bold text-lg">Web Design</h3>
+                </div>
+                <div class="card-pop p-8 text-center rounded-2xl bg-white" data-aos="flip-left" data-aos-delay="300">
+                    <i class="fa-solid fa-users-gear text-4xl text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold text-lg">Leadership</h3>
+                </div>
+                <div class="card-pop p-8 text-center rounded-2xl bg-white" data-aos="flip-left" data-aos-delay="400">
+                    <i class="fa-solid fa-microscope text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-bold text-lg">Lab Analysis</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="contactModal" onclick="closeModalOutside(event)">
+        <div class="bg-white w-[90%] max-w-md p-8 rounded-[2rem] border-4 border-black relative shadow-[10px_10px_0px_0px_#000]">
+            <button onclick="toggleModal()" class="absolute top-4 right-6 text-3xl font-bold">&times;</button>
+            <h2 class="text-2xl font-black mb-6 uppercase italic">Get in Touch</h2>
+            <div class="space-y-4 mb-8 text-gray-700">
+                <p><i class="fa-solid fa-envelope mr-3 text-pink-500"></i> davinaaprilisah4@gmail.com</p>
+                <p><i class="fa-solid fa-phone mr-3 text-pink-500"></i> +62 813 3290 2683</p>
+                <p><i class="fa-solid fa-location-dot mr-3 text-pink-500"></i> Surabaya, Indonesia</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://www.instagram.com/davinaapriilisah?igsh=N3pvdWdlbmF6Z3B1" class="card-pop p-3 rounded-xl flex-1 text-center"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/davina-aprilisah-399022405?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="card-pop p-3 rounded-xl flex-1 text-center"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                <a href="https://wa.me/qr/X3CCHMANLA6VH1" class="card-pop p-3 rounded-xl flex-1 text-center"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-[#1A1A1A] text-white py-16 px-8 mt-20">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-700 pb-12">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Davina Aprilisah</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Mahasiswa Politeknik Perkapalan Negeri Surabaya yang berfokus pada eksplorasi hal baru dan aktif berorganisasi.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                <ul class="text-gray-400 space-y-2 text-sm">
+                    <li><a href="#about" class="hover:text-white">About</a></li>
+                    <li><a href="#skills" class="hover:text-white">Skills</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Connect</h3>
+                <div class="flex gap-4 text-xl">
+                    <a href="https://www.instagram.com/davinaapriilisah?igsh=N3pvdWdlbmF6Z3B1" class="hover:text-pink-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/davina-aprilisah-399022405?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="hover:text-pink-400 transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:davinaaprilisah4@gmail.com" class="hover:text-pink-400 transition"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-10">
+            <p class="text-gray-300 font-bold text-base mb-2">Sedang Menempuh Perkuliahan di PPNS Surabaya</p>
+            <p class="text-gray-500 text-xs uppercase tracking-widest">© 2026 Student Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi Efek AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (content.classList.contains('content-show')) {
+                content.classList.remove('content-show');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('content-show');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        function toggleModal() {
+            const modal = document.getElementById('contactModal');
+            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function closeModalOutside(e) {
+            if (e.target.id === 'contactModal') toggleModal();
+        }
+    </script>
+</body>
+</html>
